@@ -140,6 +140,24 @@ All styling is centralized in a single shared CSS file (`webapp/css/game-ui.css`
 
 ---
 
-## 📄 License
+## � Screenshots
+
+### 🌲 Plantation Drive Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 👥 Volunteer Management
+![Volunteers](screenshots/volunteers.png)
+
+### 🌿 Tree Species Library
+![Tree Species](screenshots/tree-species.png)
+
+### 📝 Log Planted Trees (Quest Form)
+![Log Planting](screenshots/log-planting.png)
+
+> **Note:** The "Forest Menu" sidebar navigation glows amber for the active page. Tables use pixel-art headers with amber underlines, and forms feature the scroll 📜 decoration with 3D tactile buttons.
+
+---
+
+## �📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
