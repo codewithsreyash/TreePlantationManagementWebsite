@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Impact Dashboard</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body class="has-sidebar">
+    <div class="navbar">
+        <h:link outcome="index" value="Drives Dashboard" styleClass="nav-link" />
+        <h:link outcome="volunteers" value="Volunteer Management" styleClass="nav-link" />
+        <h:link outcome="tree-species" value="Manage Trees" styleClass="nav-link" />
+        <h:link outcome="log-planting" value="Log Planting" styleClass="nav-link" />
+        <h:link outcome="reports" value="Impact Reports" styleClass="nav-link active" />
+    </div>
+
+    <div class="dashboard-container quest-panel">
+        
+        <div class="cards-row">
+            <div class="stat-card">
+                <div class="stat-value">#{reportController.totalTrees}</div>
+                <div class="stat-title">Total Trees Planted</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">#{reportController.totalDrives}</div>
+                <div class="stat-title">Global Reach</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">#{reportController.totalVolunteers}</div>
+                <div class="stat-title">Volunteer Force</div>
+            </div>
+        </div>
+
+        <div class="tables-row">
+            <!-- Top Reforesters -->
+            <div class="table-card">
+                <h2>Top Reforesters</h2>
+                <h:dataTable value="#{reportController.topReforesters}" var="ref" styleClass="data-table">
+                    <h:column>
+                        <f:facet name="header">Volunteer Name</f:facet>
+                        #{ref.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Drives Joined</f:facet>
+                        #{ref.drive_count}
+                    </h:column>
+                </h:dataTable>
+            </div>
+
+            <!-- Species Diversity -->
+            <div class="table-card">
+                <h2>Species Diversity</h2>
+                <h:dataTable value="#{reportController.speciesDiversity}" var="spec" styleClass="data-table">
+                    <h:column>
+                        <f:facet name="header">Species Name</f:facet>
+                        #{spec.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Planted Quantities</f:facet>
+                        #{spec.count}
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+
+    </div>
+</h:body>
+</html>

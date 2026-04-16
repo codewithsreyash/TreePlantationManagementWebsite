@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Tree Species Management</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body class="has-sidebar">
+    <div class="navbar">
+        <h:link outcome="index" value="Drives Dashboard" styleClass="nav-link" />
+        <h:link outcome="volunteers" value="Volunteer Management" styleClass="nav-link" />
+        <h:link outcome="tree-species" value="Manage Trees" styleClass="nav-link active" />
+        <h:link outcome="log-planting" value="Log Planting" styleClass="nav-link" />
+    </div>
+
+    <div class="container quest-panel">
+        <div class="header">
+            <h1>Tree Species Library</h1>
+            <h:button value="+ New Species" outcome="add-species" styleClass="btn"/>
+        </div>
+        
+        <h:form>
+            <h:dataTable value="#{treeSpeciesController.trees}" var="tree" styleClass="data-table" 
+                         rendered="#{not empty treeSpeciesController.trees}">
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{tree.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Scientific Name</f:facet>
+                    #{tree.scientificName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:commandButton value="Delete" action="#{treeSpeciesController.deleteTree(tree.id)}" 
+                                     styleClass="btn-delete" onclick="return confirm('Are you sure you want to delete this species?');" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <h:panelGroup rendered="#{empty treeSpeciesController.trees}" layout="block" styleClass="empty-state">
+            No tree species registered yet. Click "+ New Species" to add one!
+        </h:panelGroup>
+    </div>
+</h:body>
+</html>

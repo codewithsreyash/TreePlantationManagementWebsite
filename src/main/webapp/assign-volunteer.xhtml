@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Assign Volunteer</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body class="has-sidebar">
+    <div class="navbar">
+        <h:link outcome="index" value="Drives Dashboard" styleClass="nav-link" />
+        <h:link outcome="volunteers" value="Volunteer Management" styleClass="nav-link" />
+        <h:link outcome="tree-species" value="Manage Trees" styleClass="nav-link" />
+        <h:link outcome="log-planting" value="Log Planting" styleClass="nav-link" />
+        <h:link outcome="reports" value="Impact Reports" styleClass="nav-link" />
+    </div>
+
+    <div class="form-card quest-form" style="margin: 40px auto;">
+        <h2>Assign Volunteer to Drive</h2>
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="driveSelect" value="Select Plantation Drive" styleClass="form-label"/>
+                <h:selectOneMenu id="driveSelect" value="#{plantationDriveController.selectedDriveId}" styleClass="form-control">
+                    <f:selectItems value="#{plantationDriveController.drives}" var="drive" 
+                                   itemValue="#{drive.id}" itemLabel="#{drive.location} - #{drive.driveDate}" />
+                </h:selectOneMenu>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="volunteerSelect" value="Select Volunteer" styleClass="form-label"/>
+                <h:selectOneMenu id="volunteerSelect" value="#{plantationDriveController.selectedVolunteerId}" styleClass="form-control">
+                    <f:selectItems value="#{plantationDriveController.availableVolunteers}" var="vol" 
+                                   itemValue="#{vol.id}" itemLabel="#{vol.name} (#{vol.email})" />
+                </h:selectOneMenu>
+            </div>
+            
+            <h:commandButton value="Assign Volunteer" action="#{plantationDriveController.assignVolunteer}" styleClass="btn-submit"/>
+        </h:form>
+        
+        <h:link outcome="index" value="← Back to Dashboard" styleClass="back-link"/>
+    </div>
+</h:body>
+</html>

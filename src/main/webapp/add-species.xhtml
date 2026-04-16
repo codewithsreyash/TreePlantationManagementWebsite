@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Add Tree Species</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body class="has-sidebar">
+    <div class="navbar">
+        <h:link outcome="index" value="Drives Dashboard" styleClass="nav-link" />
+        <h:link outcome="volunteers" value="Volunteer Management" styleClass="nav-link" />
+        <h:link outcome="tree-species" value="Manage Trees" styleClass="nav-link active" />
+        <h:link outcome="log-planting" value="Log Planting" styleClass="nav-link" />
+    </div>
+
+    <div class="form-card quest-form" style="margin: 40px auto;">
+        <h2>Register New Species</h2>
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="name" value="Common Name" styleClass="form-label"/>
+                <h:inputText id="name" value="#{treeSpeciesController.newTree.name}" 
+                             required="true" requiredMessage="Name is required" 
+                             styleClass="form-control" p:placeholder="e.g., Neem"/>
+                <h:message for="name" styleClass="error-msg"/>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="sciName" value="Scientific Name" styleClass="form-label"/>
+                <h:inputText id="sciName" value="#{treeSpeciesController.newTree.scientificName}" 
+                             required="true" requiredMessage="Scientific name is required" 
+                             styleClass="form-control" p:placeholder="e.g., Azadirachta indica"/>
+                <h:message for="sciName" styleClass="error-msg"/>
+            </div>
+            
+            <h:commandButton value="Save Species" action="#{treeSpeciesController.saveTree}" styleClass="btn-submit"/>
+        </h:form>
+        
+        <h:link outcome="tree-species" value="← Back to Library" styleClass="back-link"/>
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Coordinator Dashboard</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body>
+    <div class="admin-panel">
+        <h2>Create New Plantation Drive</h2>
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="loc" value="Location:" />
+                <h:inputText id="loc" value="#{coordinatorBean.newDrive.location}" required="true" requiredMessage="Location is required." />
+                <h:message for="loc" style="color:red;" />
+                
+                <h:outputLabel for="date" value="Date (yyyy-MM-dd):" />
+                <h:inputText id="date" value="#{coordinatorBean.newDrive.driveDate}" required="true" requiredMessage="Date is required.">
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="date" style="color:red;" />
+            </h:panelGrid>
+            <h:commandButton value="Create Drive" action="#{coordinatorBean.createDrive}" class="button" />
+        </h:form>
+        
+        <h:panelGroup rendered="#{not empty coordinatorBean.weatherStatus}">
+            <div class="alert">
+                <h:outputText value="#{coordinatorBean.weatherStatus}" />
+            </div>
+        </h:panelGroup>
+        
+        <hr/>
+        <h2>All Active Drives</h2>
+        <h:dataTable value="#{coordinatorBean.allDrives}" var="drive" styleClass="table">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{drive.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Location</f:facet>
+                #{drive.location}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Date</f:facet>
+                <h:outputText value="#{drive.driveDate}">
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:outputText>
+            </h:column>
+        </h:dataTable>
+        
+        <hr/>
+        <h2>Analytics: Trees Planted per Region (JDBC Report)</h2>
+        <h:dataTable value="#{coordinatorBean.treeReport.entrySet().toArray()}" var="entry" styleClass="table">
+            <h:column>
+                <f:facet name="header">Region</f:facet>
+                #{entry.key}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Total Trees</f:facet>
+                #{entry.value}
+            </h:column>
+        </h:dataTable>
+        
+        <a class="back-link" href="index">← Back to Public Portal (Servlet/JSP)</a>
+    </div>
+</h:body>
+</html>

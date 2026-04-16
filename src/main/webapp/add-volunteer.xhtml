@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Register Volunteer</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body class="no-sidebar">
+    <div class="form-card quest-form">
+        <h2>Register Volunteer</h2>
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="name" value="Full Name" styleClass="form-label"/>
+                <h:inputText id="name" value="#{volunteerController.newVolunteer.name}" 
+                             required="true" requiredMessage="Name is required" 
+                             styleClass="form-control" p:placeholder="e.g., John Doe"/>
+                <h:message for="name" styleClass="error-msg"/>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="email" value="Email Address" styleClass="form-label"/>
+                <h:inputText id="email" value="#{volunteerController.newVolunteer.email}" 
+                             required="true" requiredMessage="Email is required" 
+                             styleClass="form-control" p:placeholder="john.doe@example.com"/>
+                <h:message for="email" styleClass="error-msg"/>
+            </div>
+            
+            <h:commandButton value="Register" action="#{volunteerController.saveVolunteer}" styleClass="btn-submit"/>
+        </h:form>
+        
+        <h:link outcome="volunteers" value="← Back to Volunteers List" styleClass="back-link"/>
+    </div>
+</h:body>
+</html>

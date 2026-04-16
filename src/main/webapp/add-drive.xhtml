@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Create Plantation Drive</title>
+    <link rel="stylesheet" href="css/game-ui.css" />
+</h:head>
+<h:body class="no-sidebar">
+    <div class="form-card quest-form">
+        <h2>Schedule New Drive</h2>
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel for="location" value="Location" styleClass="form-label"/>
+                <h:inputText id="location" value="#{plantationDriveController.newDrive.location}" 
+                             required="true" requiredMessage="Location is required" 
+                             styleClass="form-control" p:placeholder="e.g., Central Park"/>
+                <h:message for="location" styleClass="error-msg"/>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="driveDate" value="Event Date (yyyy-MM-dd)" styleClass="form-label"/>
+                <h:inputText id="driveDate" value="#{plantationDriveController.newDrive.driveDate}" 
+                             required="true" requiredMessage="Date is required" 
+                             styleClass="form-control" p:placeholder="2024-10-15">
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="driveDate" styleClass="error-msg"/>
+            </div>
+            
+            <h:commandButton value="Save Drive" action="#{plantationDriveController.saveDrive}" styleClass="btn-submit"/>
+        </h:form>
+        
+        <h:link outcome="index" value="← Back to Dashboard" styleClass="back-link"/>
+    </div>
+</h:body>
+</html>

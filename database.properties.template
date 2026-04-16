@@ -1,0 +1,3 @@
+db.url=jdbc:mysql://localhost:3306/treeplantation?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+db.username=root
+db.password=YOUR_PASSWORD_HERE
