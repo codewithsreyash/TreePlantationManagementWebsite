@@ -61,10 +61,8 @@ src/main/
 ### Prerequisites
 
 - **JDK 11+**
-- **Apache Tomcat 9+**
 - **MySQL 8+**
-- **Maven 3.6+**
-- **Eclipse IDE** (recommended) with Maven and Server adapters
+- *(Tomcat is no longer manually required as we use the embedded Jetty plugin!)*
 
 ### 1. Clone the Repository
 
@@ -84,27 +82,28 @@ cp database.properties.template src/main/resources/database.properties
 Edit `src/main/resources/database.properties`:
 
 ```properties
-db.url=jdbc:mysql://localhost:3306/treeplantation?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+db.url=jdbc:mysql://localhost:3306/treeplantation?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
 db.username=root
 db.password=YOUR_PASSWORD_HERE
 ```
 
 > Hibernate will auto-create tables on first run (`hibernate.hbm2ddl.auto=update`).
 
-### 3. Build with Maven
+### 3. Start the Project
 
+We have included scripts to make starting the server a one-click process:
+
+**Windows:**
+Simply double-click `run.bat` to download dependencies and start the app on port 8080.
+To stop the app safely, double-click `stop.bat`.
+
+**Manual / Linux / Mac:**
+You can use the included Maven wrapper:
 ```bash
-mvn clean package
+./mvnw clean jetty:run
 ```
 
-This produces `target/TreePlantationApp.war`.
-
-### 4. Deploy to Tomcat
-
-- **Via Eclipse**: Add the project to a Tomcat server adapter → Right-click → *Run on Server*
-- **Manual**: Copy `TreePlantationApp.war` to Tomcat's `webapps/` directory
-
-### 5. Access the App
+### 4. Access the App
 
 Navigate to: `http://localhost:8080/TreePlantationApp/`
 
