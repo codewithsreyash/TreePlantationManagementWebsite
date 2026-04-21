@@ -112,6 +112,17 @@ Navigate to: `http://localhost:8080/TreePlantationApp/`
 
 ---
 
+## 📊 System Diagrams
+
+For an in-depth look at the architecture, please see the [System Diagrams Document](SYSTEM_DIAGRAMS.md) which includes:
+- **Use Case Diagram**
+- **Entity-Relationship (ER) Diagram**
+- **Class Diagram**
+- **Sequence Diagram**
+- **Activity Diagram**
+
+---
+
 ## 🗄️ Database Schema
 
 The app uses three main tables with two join tables:
