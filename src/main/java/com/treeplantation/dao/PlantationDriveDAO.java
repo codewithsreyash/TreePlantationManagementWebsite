@@ -30,6 +30,18 @@ public class PlantationDriveDAO {
         return sessionFactory.getCurrentSession().get(PlantationDrive.class, id);
     }
 
+    // GAP 5: Hibernate Criteria API query using CriteriaBuilder
+    public List<PlantationDrive> findDrivesByLocationPattern(String pattern) {
+        org.hibernate.Session session = sessionFactory.getCurrentSession();
+        javax.persistence.criteria.CriteriaBuilder cb = session.getCriteriaBuilder();
+        javax.persistence.criteria.CriteriaQuery<PlantationDrive> cq = cb.createQuery(PlantationDrive.class);
+        javax.persistence.criteria.Root<PlantationDrive> root = cq.from(PlantationDrive.class);
+        
+        cq.select(root).where(cb.like(root.get("location"), "%" + pattern + "%"));
+        
+        return session.createQuery(cq).getResultList();
+    }
+
     @SuppressWarnings("unchecked")
     public List<PlantationDrive> findByLocation(String location) {
         return sessionFactory.getCurrentSession()

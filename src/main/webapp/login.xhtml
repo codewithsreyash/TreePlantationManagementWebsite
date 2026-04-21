@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>PlantTree - Login Quest</title>
+    <!-- Fixed CSS linking -->
+    <link rel="stylesheet" href="#{request.contextPath}/css/game-ui.css" />
+</h:head>
+<h:body>
+    <br/><br/>
+    <div class="quest-log-panel" style="width: 400px; margin: 80px auto; padding: 30px;">
+        <h1 class="pixel-heading" style="text-align:center; color: #FFB800;">ADMIN LOGIN KEY</h1>
+        
+        <h:outputText value="Invalid credentials! Quest failed." styleClass="error-message" 
+                      rendered="#{param.error != null}" 
+                      style="color: #ff5555; font-family: 'Press Start 2P', monospace; font-size: 10px; display:block; text-align:center; margin-bottom: 20px;" />
+        
+        <!-- Standard HTML form posting to Spring Security defaults -->
+        <form action="#{request.contextPath}/login" method="post" class="quest-form">
+            
+            <label for="username" style="color: #ccc; font-family: 'Chakra Petch', sans-serif;">Admin Username:</label>
+            <input type="text" id="username" name="username" class="pixel-input" style="width: 100%; margin-bottom: 20px; box-sizing: border-box; padding: 10px;" required="required" />
+            
+            <label for="password" style="color: #ccc; font-family: 'Chakra Petch', sans-serif;">Admin Password:</label>
+            <input type="password" id="password" name="password" class="pixel-input" style="width: 100%; margin-bottom: 30px; box-sizing: border-box; padding: 10px;" required="required" />
+            
+            <button type="submit" class="btn3d" style="width: 100%; background: #2d5a27; color: #fff; font-family: 'Press Start 2P', monospace; font-size:12px; border: 2px solid #5a8a4f; cursor: pointer; padding: 15px;">
+                UNLOCK DASHBOARD
+            </button>
+            
+        </form>
+        <br/>
+        <div style="text-align:center; margin-top: 20px;">
+             <a href="#{request.contextPath}/index.xhtml" style="color: #aaa; text-decoration: none; font-family: 'Chakra Petch', sans-serif;">← Return to Global Map</a>
+        </div>
+    </div>
+</h:body>
+</html>

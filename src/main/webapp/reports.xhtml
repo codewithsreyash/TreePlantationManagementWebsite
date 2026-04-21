@@ -31,6 +31,16 @@
                 <div class="stat-value">#{reportController.totalVolunteers}</div>
                 <div class="stat-title">Volunteer Force</div>
             </div>
+            
+            <!-- GAP 6: SDG 13 & SDG 15 Dashboard Metric -->
+            <div class="stat-card" style="border: 1px solid #FFB800;">
+                <div class="stat-value" style="color: #FFB800;">#{reportController.co2OffsetEstimate} kg</div>
+                <div class="stat-title">CO₂ Offset Estimate</div>
+                <div style="font-size: 10px; margin-top: 10px; font-family: 'Press Start 2P', monospace;">
+                    <span style="background: #2d5a27; padding: 3px 6px; border-radius: 3px; margin-right: 5px; color: #fff; display: inline-block; margin-bottom: 5px;">🌍 SDG 13</span>
+                    <span style="background: #5a8a4f; padding: 3px 6px; border-radius: 3px; color: #fff; display: inline-block;">🌳 SDG 15</span>
+                </div>
+            </div>
         </div>
 
         <div class="tables-row">

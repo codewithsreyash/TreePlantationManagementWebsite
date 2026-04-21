@@ -23,6 +23,41 @@
         <param-value>Development</param-value>
     </context-param>
 
+    <!-- 1. Custom Auth Filter (Gap 2) -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.plantree.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin.xhtml</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/drives/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Spring Security Filter Chain (Gap 1) -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <!-- Spring MVC Dispatcher Servlet (Gap 3) -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
     <!-- Faces Servlet -->
     <servlet>
         <servlet-name>FacesServlet</servlet-name>
@@ -37,7 +72,7 @@
 
     <!-- Welcome File -->
     <welcome-file-list>
-        <welcome-file>index</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
 
 </web-app>

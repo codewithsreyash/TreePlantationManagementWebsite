@@ -29,6 +29,15 @@ public class VolunteerDAO {
     public Volunteer findById(Long id) {
         return sessionFactory.getCurrentSession().get(Volunteer.class, id);
     }
+    
+    // GAP 5: HQL query with a WHERE clause and parameter binding
+    @SuppressWarnings("unchecked")
+    public List<Volunteer> findVolunteersByEmailDomain(String domain) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Volunteer where email like :domain")
+                .setParameter("domain", "%" + domain + "%")
+                .list();
+    }
 
     public void delete(Long id) {
         Volunteer volunteer = sessionFactory.getCurrentSession().get(Volunteer.class, id);

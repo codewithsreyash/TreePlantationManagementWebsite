@@ -4,7 +4,7 @@ import com.treeplantation.dao.PlantationDriveDAO;
 import com.treeplantation.dao.ReportDAO;
 import com.treeplantation.model.PlantationDrive;
 import com.treeplantation.service.BulkEmailNotificationService;
-import com.treeplantation.service.WeatherSocketClient;
+import com.plantree.service.WeatherSocketClient;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

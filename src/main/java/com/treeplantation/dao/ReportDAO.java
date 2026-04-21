@@ -66,6 +66,22 @@ public class ReportDAO {
         return 0;
     }
 
+    // GAP 6: Calculate CO2 offset using raw JDBC PreparedStatement
+    public int getCo2OffsetEstimate() {
+        int co2Offset = 0;
+        String query = "SELECT COUNT(*) * 21 AS co2_offset FROM drive_trees";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+             if (rs.next()) {
+                 co2Offset = rs.getInt("co2_offset");
+             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return co2Offset;
+    }
+
     public List<Map<String, Object>> getTopReforesters() {
         List<Map<String, Object>> results = new ArrayList<>();
         String q = "SELECT v.name, COUNT(dv.drive_id) as drive_count FROM volunteer v JOIN drive_volunteers dv ON v.id = dv.volunteer_id GROUP BY v.id ORDER BY drive_count DESC LIMIT 5";

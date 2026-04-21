@@ -25,6 +25,11 @@ public class ReportService {
         return reportDAO.getTotalVolunteers();
     }
 
+    // GAP 6: Forward the CO2 Offset to the controller layer
+    public int getCo2OffsetEstimate() {
+        return reportDAO.getCo2OffsetEstimate();
+    }
+
     public List<Map<String, Object>> getTopReforesters() {
         return reportDAO.getTopReforesters();
     }

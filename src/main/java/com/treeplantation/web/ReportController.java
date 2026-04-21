@@ -19,6 +19,7 @@ public class ReportController {
     private int totalTrees;
     private int totalDrives;
     private int totalVolunteers;
+    private int co2OffsetEstimate; // GAP 6
 
     private List<Map<String, Object>> topReforesters;
     private List<Map<String, Object>> speciesDiversity;
@@ -28,6 +29,7 @@ public class ReportController {
         totalTrees = reportService.getTotalTrees();
         totalDrives = reportService.getTotalDrives();
         totalVolunteers = reportService.getTotalVolunteers();
+        co2OffsetEstimate = reportService.getCo2OffsetEstimate(); // GAP 6
         topReforesters = reportService.getTopReforesters();
         speciesDiversity = reportService.getSpeciesDiversity();
     }
@@ -35,6 +37,7 @@ public class ReportController {
     public int getTotalTrees() { return totalTrees; }
     public int getTotalDrives() { return totalDrives; }
     public int getTotalVolunteers() { return totalVolunteers; }
+    public int getCo2OffsetEstimate() { return co2OffsetEstimate; } // GAP 6
     public List<Map<String, Object>> getTopReforesters() { return topReforesters; }
     public List<Map<String, Object>> getSpeciesDiversity() { return speciesDiversity; }
 

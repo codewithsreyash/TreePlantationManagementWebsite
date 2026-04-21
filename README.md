@@ -10,8 +10,11 @@ A full-stack **Java EE web application** for managing tree plantation drives, vo
 - **Volunteer Management** — Register volunteers, assign them to drives, track participation
 - **Tree Species Library** — Catalog tree species with scientific names
 - **Planting Logger** — Log tree planting events per drive with quantity tracking
-- **Impact Reports** — Dashboard with stat cards, top reforesters, and species diversity analytics
-- **Coordinator Admin Panel** — JDBC-based analytics and weather status alerts
+- **Impact Reports & SDG Metrics** — Dashboard with stat cards, top reforesters, and dynamic **CO₂ Offset Estimates** (SDG 13 & 15).
+- **Coordinator Admin Panel** — Protected by **Spring Security** (in-memory authentication) and custom **Auth Filters**.
+- **RESTful API** — JSON endpoints built with Spring MVC (e.g., `/api/drives`).
+- **Asynchronous Weather Alerts** — Multithreaded daemon service pulling background weather statuses without blocking the UI.
+- **Advanced Querying** — Leveraging both **HQL** and **JPA Criteria API** for complex database reporting.
 - **Game-Style UI** — Resource-management-game aesthetic with 3D tactile buttons, quest-log panels, animated progress bars, and pixel-art typography
 
 ---

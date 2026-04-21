@@ -10,6 +10,6 @@ echo.
 echo To stop the server, press Ctrl+C
 echo.
 
-call mvnw.cmd clean jetty:run
+call mvnw.cmd clean package jetty:run
 
 pause
